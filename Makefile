@@ -18,6 +18,11 @@ console: ## Connect to console container
 vendor/autoload.php: ## Install composer dependencies
 	composer install
 
+unit-test: vendor/autoload.php
+	${bin_dir}/phpunit --configuration .
+
+test: unit-test ## Launch tests
+
 cs-check: vendor/autoload.php ## Check PHP CS
 	${bin_dir}/php-cs-fixer --version
 	${bin_dir}/php-cs-fixer fix -v --diff --dry-run
