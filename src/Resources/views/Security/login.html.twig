@@ -1,0 +1,42 @@
+{% extends mmc_fos_user_layout %}
+
+{% trans_default_domain 'FOSUserBundle' %}
+
+{% block fos_user_content %}
+{% if error %}
+    <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+{% endif %}
+    <p class="login-box-msg">{{ 'security.login.sign_in_title'|trans }}</p>
+
+    <form action="{{ path("fos_user_security_check") }}" method="post">
+      <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
+      <div class="form-group has-feedback">
+        <input type="text" id="username" name="_username" class="form-control" value="{{ last_username }}" placeholder="{{ 'security.login.username_email'|trans }}" required="required" />
+        <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+      </div>
+      <div class="form-group has-feedback">
+        <input type="password" id="password" name="_password" class="form-control" placeholder="{{ 'security.login.password'|trans }}" required="required" />
+        <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+      </div>
+      <div class="row">
+        <div class="col-xs-8">
+          <div class="checkbox icheck">
+            <label>
+              <input type="checkbox" id="remember_me" name="_remember_me" value="on" /> {{ 'security.login.remember_me'|trans }}
+            </label>
+          </div>
+        </div>
+        <!-- /.col -->
+        <div class="col-xs-4">
+          <button type="submit" id="_submit" name="_submit" class="btn btn-primary btn-block btn-flat">{{ 'security.login.submit'|trans }}</button>
+        </div>
+        <!-- /.col -->
+      </div>
+    </form>
+
+    <a href="{{ path('fos_user_resetting_request') }}">{{ 'security.login.forgot_pwd'|trans }}</a><br>
+<!-- /.login-box -->
+{% endblock fos_user_content %}
+
+
+

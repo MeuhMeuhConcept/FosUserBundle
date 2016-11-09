@@ -1,0 +1,6 @@
+security:
+    login:
+        sign_in_title: 'Connectez-vous pour commencer votre session'
+        forgot_pwd: 'J''ai oublié mon mot de passe'
+        username_email: 'Nom d''utilisateur ou Email'
+        
