@@ -1,0 +1,29 @@
+before_script:
+    - docker info
+
+stages:
+    - prepare
+    - test
+    - cleanup
+
+start_compose:
+    stage: prepare
+    script:
+        - make docker/docker-compose.env
+        - ln --symbolic --verbose ~/docker-home docker/.home-developer
+        - docker-compose --project-name mmc-fos-user up -d console
+        - sleep 1 # wait for the entrypoint to complete
+
+run_tests:
+    stage: test
+    script:
+        - docker exec --user=gitlab-runner mmc-fos-user_console make test
+        - docker exec --user=gitlab-runner mmc-fos-user_console make cs-check
+
+stop_compose:
+    stage: cleanup
+    script:
+        - make docker/docker-compose.env
+        - docker-compose stop
+        - docker-compose rm --force
+    when: always
