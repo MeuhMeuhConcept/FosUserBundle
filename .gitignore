@@ -1,3 +1,6 @@
 # Docker
 /docker/docker-compose.env
 /docker/.home-developer
+
+# Composer
+/vendor
