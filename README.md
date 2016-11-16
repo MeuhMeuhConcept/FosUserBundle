@@ -31,7 +31,7 @@ In app/AppKernel.php, add following lines
 public function registerBundles()
 {
     $bundles = [
-b
+
         // ...
 
         new MMC\FosUserBundle\MMCFosUserBundle(),
@@ -94,7 +94,7 @@ fos_user:
 ## Use with MMC/SonataAdminBundle
 
 
-If you use the bundle MMCSonataAdminBudnle abd you need to use the admin of users you can enable it like this:
+If you use the bundle MMCSonataAdminBudnle and you need to use the admin of users you can enable it like this:
 
 ```yaml
 # app/config/config.yml
@@ -109,9 +109,10 @@ mmc_fos_user:
     admin: ~
         group: 'name.of.my.custom.group'
         icon: '<i class="fa fa-user"></i>'
+        nav_top: ~
 ```
 
-If you override the configuration on`sonata_admin.dashboard.groups`, the previous configuration is useless because it will be overwritten.
+If you override the configuration on `sonata_admin.dashboard.groups`, the previous configuration is useless because it will be overwritten.
 
 You should add the service id `mmc_fos_user_bundle.sonata_admin.user` in the items list :
 ```yaml
@@ -124,4 +125,8 @@ sonata_admin:
                     - my_first.admin
                     - mmc_fos_user_bundle.sonata_admin.user
 ```
+## Create a custom block
 
+If you need to add a new custom block, you should :
+
+-  [Create a block service](https://sonata-project.org/bundles/block/master/doc/reference/your_first_block.html)

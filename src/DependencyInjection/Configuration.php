@@ -18,11 +18,31 @@ class Configuration implements ConfigurationInterface
     public function getConfigTreeBuilder()
     {
         $treeBuilder = new TreeBuilder();
-        $rootNode = $treeBuilder->root('MMCFosUserBundle_back_user');
+        $rootNode = $treeBuilder->root('mmc_fos_user');
 
         // Here you should define the parameters that are allowed to
         // configure your bundle. See the documentation linked above for
         // more information on that topic.
+
+        $rootNode
+            ->children()
+                ->arrayNode('admin')
+                    ->canBeEnabled()
+                    ->addDefaultsIfNotSet()
+                    ->children()
+                        ->scalarNode('group')
+                            ->defaultValue('sonata.admin.group.administration')
+                        ->end()
+                        ->scalarNode('icon')
+                            ->defaultValue('<i class="fa fa-cogs"></i>')
+                        ->end()
+                        ->booleanNode('nav_top')
+                            ->defaultValue(true)
+                        ->end()
+                    ->end()
+                ->end()
+            ->end()
+        ;
 
         return $treeBuilder;
     }
