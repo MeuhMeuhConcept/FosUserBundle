@@ -68,8 +68,6 @@ class MMCFosUserExtension extends Extension implements PrependExtensionInterface
 
         $bundles = $container->getParameter('kernel.bundles');
 
-        $sonataAdminTemplate = 'mmc_fos_user_bundle.sonata_admin.template';
-
         if ($config['admin']['enabled']
             && isset($bundles['MMCSonataAdminBundle'])
             && $config['admin']['nav_top']
