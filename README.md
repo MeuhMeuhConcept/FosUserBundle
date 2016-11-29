@@ -8,12 +8,22 @@ Add the repository in composer.json
 ```json
 {
     /* ..... */
+
     "repositories" : [
         {
             "type" : "vcs",
             "url" : "git@git.meuhmeuhconcept.fr:mmc/FosUserBundle.git"
         }
     ],
+
+    "require": {
+        // ...
+
+        "friendsofsymfony/user-bundle": "~2.0@dev",
+
+        // ...
+    },
+
     /* ..... */
 }
 ```
