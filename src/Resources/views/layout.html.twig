@@ -3,19 +3,32 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>AdminMMC | Log in</title>
+  {% block title %}
+    <title>{% block title_content %}AdminMMC | Log in{% endblock title_content %}</title>
+  {% endblock title %}
+
+  {% block favicon %}
+  {% endblock favicon %}
+
+  {% block stylesheets %}
+  {% endblock stylesheets %}
 
 </head>
 <body class="hold-transition login-page">
-    <div class="login-box">
-        <div class="login-logo">
-          <a href="/admin"><b>Admin</b>MMC</a>
+    {% block body %}
+        <div class="login-box">
+            <div class="login-logo">
+                <a href="/admin"><b>Admin</b>MMC</a>
+            </div>
+            <div class="login-box-body">
+                {% block fos_user_content %}
+                {% endblock fos_user_content %}
+            </div>
         </div>
-  <!-- /.login-logo -->
-        <div class="login-box-body">
-        {% block fos_user_content %}
-        {% endblock fos_user_content %}
-        </div>
-    </div>
+    {% endblock body %}
+
+    {% block javascripts %}
+    {% endblock javascripts %}
+
 </body>
 </html>

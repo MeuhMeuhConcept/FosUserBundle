@@ -32,7 +32,10 @@ Via composer
 ```bash
 composer require mmc/fos-user-bundle
 ```
-
+Installs bundles web assets under a public web directory
+```bash
+bin/console assets:install
+```
 ## Configuration
 
 ### Add bundles
@@ -68,6 +71,14 @@ fos_user:
 twig:
     globals:
         mmc_fos_user_layout: "FOSUserBundle::layout.html.twig"
+```
+If you need a design layout, you should use the default layout :
+```yaml
+# app/config/config.yml
+
+twig:
+    globals:
+        mmc_fos_user_layout: "FOSUserBundle:Default:layout.html.twig"
 ```
 Add fos user security configuration :
 ```yaml
