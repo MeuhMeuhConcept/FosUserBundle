@@ -116,7 +116,7 @@ By default, the admin is place under `sonata.admin.group.administration`, you ca
 ```yaml
 # app/config/config.yml
 mmc_fos_user:
-    admin: ~
+    admin:
         group: 'name.of.my.custom.group'
         icon: '<i class="fa fa-user"></i>'
         nav_top: ~
