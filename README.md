@@ -8,12 +8,22 @@ Add the repository in composer.json
 ```json
 {
     /* ..... */
+
     "repositories" : [
         {
             "type" : "vcs",
             "url" : "git@git.meuhmeuhconcept.fr:mmc/FosUserBundle.git"
         }
     ],
+
+    "require": {
+        // ...
+
+        "friendsofsymfony/user-bundle": "~2.0@dev",
+
+        // ...
+    },
+
     /* ..... */
 }
 ```
@@ -22,7 +32,10 @@ Via composer
 ```bash
 composer require mmc/fos-user-bundle
 ```
-
+Installs bundles web assets under a public web directory
+```bash
+bin/console assets:install
+```
 ## Configuration
 
 ### Add bundles
@@ -44,8 +57,6 @@ public function registerBundles()
 }
 ```
 
-## Configure bundles
-
 Add fos user configuration and twig layout :
 ```yaml
 # app/config/config.yml
@@ -58,6 +69,14 @@ fos_user:
 twig:
     globals:
         mmc_fos_user_layout: "FOSUserBundle::layout.html.twig"
+```
+If you need a design layout, you should use the default layout :
+```yaml
+# app/config/config.yml
+
+twig:
+    globals:
+        mmc_fos_user_layout: "FOSUserBundle:Default:layout.html.twig"
 ```
 Add fos user security configuration :
 ```yaml
@@ -84,11 +103,39 @@ Add fos user security configuration :
             lifetime: 604800 # 1 week in seconds
             path:     /
 ```
+
 Add fos user route :
 ```yaml
 # app/config/routing.yml
 fos_user:
     resource: "@FOSUserBundle/Resources/config/routing/all.xml"
+```
+
+## Customization
+
+If you need to change the logout path ('/logout' by default), you should edit the twig global 'mmc_fos_user_bundle_logout_path'.
+For example, if I need '/admin/logout' for logout path :
+
+```yaml
+# app/config/config.yml
+
+twig:
+    globals:
+        mmc_fos_user_bundle_logout_path: '/admin/logout'
+```
+
+And change the path in security.yml :
+
+```yaml
+# app/config/security.yml
+
+    /----
+
+    main:
+        logout:
+            path:     /admin/logout
+            target:   /admin/login
+    /----
 ```
 
 ## Use with MMC/SonataAdminBundle
@@ -106,7 +153,7 @@ By default, the admin is place under `sonata.admin.group.administration`, you ca
 ```yaml
 # app/config/config.yml
 mmc_fos_user:
-    admin: ~
+    admin:
         group: 'name.of.my.custom.group'
         icon: '<i class="fa fa-user"></i>'
         nav_top: ~
