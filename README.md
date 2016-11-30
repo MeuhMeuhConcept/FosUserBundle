@@ -57,8 +57,6 @@ public function registerBundles()
 }
 ```
 
-## Configure bundles
-
 Add fos user configuration and twig layout :
 ```yaml
 # app/config/config.yml
@@ -105,11 +103,39 @@ Add fos user security configuration :
             lifetime: 604800 # 1 week in seconds
             path:     /
 ```
+
 Add fos user route :
 ```yaml
 # app/config/routing.yml
 fos_user:
     resource: "@FOSUserBundle/Resources/config/routing/all.xml"
+```
+
+## Customization
+
+If you need to change the logout path ('/logout' by default), you should edit the twig global 'mmc_fos_user_bundle_logout_path'.
+For example, if I need '/admin/logout' for logout path :
+
+```yaml
+# app/config/config.yml
+
+twig:
+    globals:
+        mmc_fos_user_bundle_logout_path: '/admin/logout'
+```
+
+And change the path in security.yml :
+
+```yaml
+# app/config/security.yml
+
+    /----
+
+    main:
+        logout:
+            path:     /admin/logout
+            target:   /admin/login
+    /----
 ```
 
 ## Use with MMC/SonataAdminBundle
