@@ -84,24 +84,35 @@ Add fos user security configuration :
     encoders:
         FOS\UserBundle\Model\UserInterface: bcrypt
 
+    role_hierarchy:
+        ROLE_ADMIN:       ROLE_USER
+        ROLE_SUPER_ADMIN: ROLE_ADMIN
+
     providers:
         mmc_fos_user:
             id: fos_user.user_provider.username_email
 
-    main:
-        pattern: ^/
-        form_login:
-            provider: mmc_fos_user
-            csrf_token_generator: security.csrf.token_manager
-            default_target_path:     /admin
-        logout:
-            path:     /logout
-            target:   /login
-        anonymous:    true
-        remember_me:
-            secret:   '%secret%'
-            lifetime: 604800 # 1 week in seconds
-            path:     /
+    firewalls:
+        main:
+            pattern: ^/
+            form_login:
+                provider: mmc_fos_user
+                csrf_token_generator: security.csrf.token_manager
+                default_target_path:     /admin
+            logout:
+                path:     /logout
+                target:   /login
+            anonymous:    true
+            remember_me:
+                secret:   '%secret%'
+                lifetime: 604800 # 1 week in seconds
+                path:     /
+
+    access_control:
+        - { path: ^/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/register, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/admin/, role: ROLE_ADMIN }
 ```
 
 Add fos user route :
