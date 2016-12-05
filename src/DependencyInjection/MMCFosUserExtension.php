@@ -74,24 +74,11 @@ class MMCFosUserExtension extends Extension implements PrependExtensionInterface
         ) {
             $sonata_block = [
                 'blocks' => [
-                    'mmc_fos_user_bundle.sonata_admin.template' => ['context' => ['admin']],
+                    'mmc_fos_user_bundle.sonata_admin.template' => ['context' => ['nav_top']],
                 ],
             ];
 
             $container->prependExtensionConfig('sonata_block', $sonata_block);
-
-            $sonata_admin = [
-                'dashboard' => [
-                    'blocks' => [
-                        'mmc_fos_user_bundle.sonata_admin.template' => [
-                            'position' => 'nav_top',
-                            'type' => 'mmc_fos_user_bundle.sonata_admin.template',
-                        ],
-                    ],
-                ],
-            ];
-
-            $container->prependExtensionConfig('sonata_admin', $sonata_admin);
         }
     }
 }
