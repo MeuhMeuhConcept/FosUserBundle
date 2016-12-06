@@ -24,6 +24,6 @@ stop_compose:
     stage: cleanup
     script:
         - make docker/docker-compose.env
-        - docker-compose stop
-        - docker-compose rm --force
+        - docker-compose --project-name mmc-fos-user stop
+        - docker-compose --project-name mmc-fos-user rm --force
     when: always

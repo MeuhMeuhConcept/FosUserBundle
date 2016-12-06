@@ -43,7 +43,6 @@ class UserAdmin extends AbstractAdmin
             ->add('username')
             ->add('email')
             ->add('enabled')
-            ->add('locked')
         ;
     }
 
@@ -56,7 +55,6 @@ class UserAdmin extends AbstractAdmin
             ])
             ->add('email')
             ->add('enabled', null, ['editable' => true])
-            ->add('locked', null, ['editable' => true])
             ->add('_action', null, [
                 'actions' => [
                     'show' => [],
@@ -76,7 +74,6 @@ class UserAdmin extends AbstractAdmin
                 ->add('username')
                 ->add('email')
                 ->add('enabled')
-                ->add('locked')
                 ->add('roles', 'choice', [
                     'choices' => array_flip($this->getRolesList()),
                     'catalogue' => 'UserAdmin',
@@ -118,7 +115,6 @@ class UserAdmin extends AbstractAdmin
                     'required' => false,
                 ])
                 ->add('enabled')
-                ->add('locked')
                 ;
         }
 
