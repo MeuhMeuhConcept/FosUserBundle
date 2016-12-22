@@ -1,0 +1,20 @@
+language: bash
+
+services: docker
+
+install:
+    - sudo curl -L "https://github.com/docker/compose/releases/download/1.9.0/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+    - sudo chmod +x /usr/local/bin/docker-compose
+    - docker-compose --version
+    - make docker/docker-compose.env
+    - docker-compose --project-name mmc-fos-user up -d console
+
+script:
+    - docker exec --user=travis mmc-fos-user_console make test
+    - docker exec --user=travis mmc-fos-user_console make cs-check
+
+after_success:
+    - make remove
+
+after_failure:
+    - make remove
