@@ -12,6 +12,10 @@ start: docker/docker-compose.env ## Launch containers
 stop: ## Stop containers
 	docker-compose stop
 
+remove: ## Stop and remove containers
+	docker-compose stop
+	docker-compose rm --force
+
 console: ## Connect to console container
 	docker exec -it mmc-fos-user_console /bin/login -p -f $(shell whoami)
 
