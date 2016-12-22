@@ -1,4 +1,5 @@
-# MeuhMeuhConcept FOS UserBundle
+# MeuhMeuhConcept FOS UserBundle 
+[![Build Status](https://travis-ci.org/MeuhMeuhConcept/FosUserBundle.svg?branch=master)](https://travis-ci.org/MeuhMeuhConcept/FosUserBundle)
 
 Implementation of FosUserBundle for MMC
 
