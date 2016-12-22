@@ -1,8 +1,8 @@
 {
-    "name": "mmc/fos-user-bundle",
+    "name": "meuhmeuhconcept/fos-user-bundle",
     "license": "proprietary",
     "type": "bundle",
-    "description": "FosUserBundle implementation for MMC",
+    "description": "FosUserBundle implementation for MeuhMeuhConcepts",
     "authors": [
         {
             "name": "Jean-Noël Germon",
