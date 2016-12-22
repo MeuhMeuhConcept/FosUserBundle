@@ -1,4 +1,4 @@
-# MMC FOS UserBundle
+# MeuhMeuhConcept FOS UserBundle
 
 Implementation of FosUserBundle for MMC
 
