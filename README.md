@@ -1,29 +1,25 @@
 # MeuhMeuhConcept FOS UserBundle 
 [![Build Status](https://travis-ci.org/MeuhMeuhConcept/FosUserBundle.svg?branch=master)](https://travis-ci.org/MeuhMeuhConcept/FosUserBundle)
 
-Implementation of FosUserBundle for MMC
+Implementation of FosUserBundle for MeuhMeuhConcept
 
 ## Installation
 
+
 Add the repository in composer.json
 ```json
-{
-    "repositories" : [
-        {
-            "type" : "vcs",
-            "url" : "git@git.meuhmeuhconcept.fr:mmc/FosUserBundle.git"
-        }
-    ],
-    "require": {
-        "friendsofsymfony/user-bundle": "~2.0@dev",
-    },
+{								   
+	"require": {
+		"friendsofsymfony/user-bundle": "~2.0@dev",
+	}										        },
 }
 ```
 
 Via composer
 ```bash
-composer require mmc/fos-user-bundle
+composer require meuhmeuhconcept/fos-user-bundle
 ```
+
 Installs bundles web assets under a public web directory
 ```bash
 bin/console assets:install
@@ -64,7 +60,7 @@ twig:
 ```
 If you need a design layout, you should use the default layout :
 ```yaml
-# app/config/config.yml
+i# app/config/config.yml
 
 twig:
     globals:
