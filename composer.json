@@ -2,7 +2,7 @@
     "name": "meuhmeuhconcept/fos-user-bundle",
     "license": "proprietary",
     "type": "bundle",
-    "description": "FosUserBundle implementation for MeuhMeuhConcepts",
+    "description": "FosUserBundle implementation for MeuhMeuhConcept",
     "authors": [
         {
             "name": "Jean-Noël Germon",
