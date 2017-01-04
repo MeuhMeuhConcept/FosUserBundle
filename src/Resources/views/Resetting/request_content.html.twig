@@ -1,17 +1,21 @@
+{% extends mmc_fos_user_layout %}
+
 {% trans_default_domain 'FOSUserBundle' %}
 
-<form action="{{ path('fos_user_resetting_send_email') }}" method="POST" class="fos_user_resetting_request">
-    <div>
-        {% if invalid_username is defined %}
-            <p>{{ 'resetting.request.invalid_username'|trans({'%username%': invalid_username}) }}</p>
-        {% endif %}
-        <div class="form-group has-feedback">
-            <label for="username">{{ 'resetting.request.username'|trans }}</label>
-            <input type="text" id="username" name="username" class="form-control" placeholder="" required="required" />
-            <span class="glyphicon glyphicon-envelope form-control-feedback"></span>            
-        </div>
+{% block body %}
+    <form action="{{ path('fos_user_resetting_send_email') }}" method="POST" class="fos_user_resetting_request">
         <div>
-              <button type="submit" id="submit" name="submit" class="btn btn-primary btn-block btn-flat">{{ 'resetting.request.submit'|trans }}</button>
+            {% if invalid_username is defined %}
+                <p>{{ 'resetting.request.invalid_username'|trans({'%username%': invalid_username}) }}</p>
+            {% endif %}
+            <div class="form-group has-feedback">
+                <label for="username">{{ 'resetting.request.username'|trans }}</label>
+                <input type="text" id="username" name="username" class="form-control" placeholder="" required="required" />
+                <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+            </div>
+            <div>
+                  <button type="submit" id="submit" name="submit" class="btn btn-primary btn-block btn-flat">{{ 'resetting.request.submit'|trans }}</button>
+            </div>
         </div>
-    </div>
-</form>
+    </form>
+{% endblock body %}
