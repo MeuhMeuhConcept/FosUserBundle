@@ -5,16 +5,6 @@ Implementation of FosUserBundle for MeuhMeuhConcept
 
 ## Installation
 
-
-Add the repository in composer.json
-```json
-{								   
-	"require": {
-		"friendsofsymfony/user-bundle": "~2.0@dev",
-	}										        },
-}
-```
-
 Via composer
 ```bash
 composer require meuhmeuhconcept/fos-user-bundle
