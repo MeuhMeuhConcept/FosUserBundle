@@ -122,6 +122,17 @@ twig:
         mmc_fos_user_bundle_logout_path: '/admin/logout'
 ```
 
+By default, the admin title prefix, in the login page, is 'MMC'.
+You can change it with the twig global :
+```yaml
+# app/config/config.yml
+
+twig:
+    globals:
+        admin_title_suffix: 'Foo'
+        #'AdminMMC' => 'AdminFoo'
+```
+
 And change the path in security.yml :
 
 ```yaml
