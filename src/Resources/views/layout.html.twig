@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   {% block title %}
-    <title>{% block title_content %}AdminMMC | Log in{% endblock title_content %}</title>
+    <title>{% block title_content %}Admin{{ admin_title_suffix|default('MMC') }} | Log in{% endblock title_content %}</title>
   {% endblock title %}
 
   {% block favicon %}
@@ -18,7 +18,7 @@
     {% block body %}
         <div class="login-box">
             <div class="login-logo">
-                <a href="/admin"><b>Admin</b>MMC</a>
+                <a href="/admin"><b>Admin</b>{{ admin_title_suffix|default('MMC') }}</a>
             </div>
             <div class="login-box-body">
                 {% block fos_user_content %}
