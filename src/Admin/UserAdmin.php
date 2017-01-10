@@ -101,7 +101,7 @@ class UserAdmin extends AbstractAdmin
                     'validation_groups' => ['Default'],
                     'second_options' => ['label' => 'form.password_confirmation'],
                     'invalid_message' => 'fos_user.password.mismatch',
-                    'required' => false,
+                    'required' => $this->getSubject()->getId() == null,
                 ])
                 ;
 
