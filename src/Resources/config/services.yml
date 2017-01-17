@@ -14,6 +14,8 @@ services:
         calls:
             - [ setTranslationDomain, [UserAdmin]]
             - [ setUserManager, [ '@fos_user.user_manager']]
+            - [ setRoleHierarchy, [ '%security.role_hierarchy.roles%']]
+            - [ setRolesAvailables, ['%mmc_fos_user_bundle.roles.availables%']]
 
     mmc_fos_user_bundle.sonata_admin.template:
         class: 'MMC\FosUserBundle\Block\UserBlock'
