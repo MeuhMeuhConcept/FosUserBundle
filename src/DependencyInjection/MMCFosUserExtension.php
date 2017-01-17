@@ -59,6 +59,12 @@ class MMCFosUserExtension extends Extension implements PrependExtensionInterface
 
             $container->setDefinition($sonataAdminTemplate, $definition);
         }
+
+        if ($config['admin']['enabled']
+            && isset($config['admin']['rolesAvailables'])
+        ) {
+            $container->setParameter('mmc_fos_user_bundle.roles.availables', $config['admin']['rolesAvailables']);
+        }
     }
 
     public function prepend(ContainerBuilder $container)

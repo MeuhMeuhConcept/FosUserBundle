@@ -19,6 +19,10 @@ class UserAdmin extends AbstractAdmin
      */
     protected $userManager;
 
+    protected $rolesHierarchy;
+
+    protected $rolesAvailables;
+
     public function getExportFormats()
     {
         return [];
@@ -35,6 +39,16 @@ class UserAdmin extends AbstractAdmin
     public function setUserManager(UserManagerInterface $userManager)
     {
         $this->userManager = $userManager;
+    }
+
+    public function setRoleHierarchy(array $rolesHierarchy)
+    {
+        $this->rolesHierarchy = $rolesHierarchy;
+    }
+
+    public function setRolesAvailables(array $rolesAvailables)
+    {
+        $this->rolesAvailables = $rolesAvailables;
     }
 
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
@@ -125,11 +139,19 @@ class UserAdmin extends AbstractAdmin
 
     protected function getRolesList()
     {
-        return [
-            'Administrator' => 'ROLE_ADMIN',
-            'User' => 'ROLE_USER',
-            'Super Administrator' => 'ROLE_SUPER_ADMIN',
-        ];
+        $roles = [];
+
+        if (empty($this->rolesAvailables)) {
+            foreach ($this->rolesHierarchy as $key => $value) {
+                $roles[$key] = $key;
+            }
+        } else {
+            foreach ($this->rolesAvailables as $key) {
+                $roles[$key] = $key;
+            }
+        }
+
+        return $roles;
     }
 
     /**
