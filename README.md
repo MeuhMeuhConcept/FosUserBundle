@@ -44,13 +44,35 @@ public function registerBundles()
 }
 ```
 
+Create your own user entity
+```php
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+use MMC\FosUserBundle\Entity\User as BaseUser;
+
+/**
+ * @ORM\Entity
+ */
+class User extends BaseUser
+{
+    public function __construct()
+    {
+        parent::__construct();
+        // your own logic
+    }
+}
+```
+
 Add fos user configuration and twig layout :
 ```yaml
 # app/config/config.yml
 fos_user:
     db_driver: orm # other valid values are 'mongodb', 'couchdb' and 'propel'
     firewall_name: main
-    user_class: MMC\FosUserBundle\Entity\User
+    user_class: AppBundle\Entity\User
 
 
 twig:
