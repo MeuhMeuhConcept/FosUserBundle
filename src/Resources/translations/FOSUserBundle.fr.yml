@@ -3,4 +3,6 @@ security:
         sign_in_title: 'Connectez-vous pour commencer votre session'
         forgot_pwd: 'J''ai oublié mon mot de passe'
         username_email: 'Nom d''utilisateur ou Email'
-        
+        register: 'Créer un compte'
+registration:
+    back_login: 'J''ai déjà un compte'
