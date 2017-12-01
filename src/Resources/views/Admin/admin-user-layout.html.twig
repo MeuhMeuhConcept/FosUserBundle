@@ -1,7 +1,9 @@
 <li class="dropdown">
     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-user" aria-hidden="true"></span></a>
     <ul class="dropdown-menu">
+        {% if app.user.id|default(false) %}
         <li><a href="{{ path('mmc_sonata_admin_user_show', {id: app.user.id}) }}"><span class="glyphicon glyphicon-cog" aria-hidden="true"></span>{{ 'My account'|trans([], 'UserAdmin') }}</a></li>
+        {% endif %}
         <li><a href="{{ mmc_fos_user_bundle_logout_path|default('/logout') }}"><span class="glyphicon glyphicon-off" aria-hidden="true"></span>{{ 'layout.logout'|trans([], 'FOSUserBundle') }}</a></li>
     </ul>
 </li>

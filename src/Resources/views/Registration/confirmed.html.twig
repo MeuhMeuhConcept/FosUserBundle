@@ -1,0 +1,8 @@
+{% extends mmc_fos_user_layout %}
+
+{% trans_default_domain 'FOSUserBundle' %}
+
+{% block fos_user_content %}
+    <p>{{ 'registration.confirmed'|trans({'%username%': user.username}) }}</p>
+    <a href="{{ targetUrl|default(fosBaseUrl) }}" class="btn btn-primary btn-block btn-flat">{{ 'registration.back'|trans }}</a>
+{% endblock fos_user_content %}
