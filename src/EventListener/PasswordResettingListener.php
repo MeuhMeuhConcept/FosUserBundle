@@ -6,18 +6,17 @@ use FOS\UserBundle\Event\FormEvent;
 use FOS\UserBundle\FOSUserEvents;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
-use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 
 /**
  * Listener responsible to change the redirection at the end of the password resetting.
  */
 class PasswordResettingListener implements EventSubscriberInterface
 {
-    private $router;
+    private $url;
 
-    public function __construct(UrlGeneratorInterface $router)
+    public function __construct($url)
     {
-        $this->router = $router;
+        $this->url = $url;
     }
 
     public static function getSubscribedEvents()
@@ -29,7 +28,6 @@ class PasswordResettingListener implements EventSubscriberInterface
 
     public function onPasswordResettingSuccess(FormEvent $event)
     {
-        $url = $this->router->generate('MMCFosUserBundle_back_homepage');
-        $event->setResponse(new RedirectResponse($url));
+        $event->setResponse(new RedirectResponse($this->url));
     }
 }

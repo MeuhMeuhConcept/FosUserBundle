@@ -1,7 +1,6 @@
 services:
     MMCFosUserBundle.password_resetting:
         class: MMC\FosUserBundle\EventListener\PasswordResettingListener
-        arguments: [ '@router' ]
         tags:
             - { name: kernel.event_subscriber }
 

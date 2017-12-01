@@ -26,6 +26,9 @@ class Configuration implements ConfigurationInterface
 
         $rootNode
             ->children()
+                ->scalarNode('baseUrl')
+                    ->defaultValue('/')
+                ->end()
                 ->arrayNode('admin')
                     ->canBeEnabled()
                     ->addDefaultsIfNotSet()

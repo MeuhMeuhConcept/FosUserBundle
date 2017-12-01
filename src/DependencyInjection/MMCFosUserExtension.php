@@ -65,6 +65,10 @@ class MMCFosUserExtension extends Extension implements PrependExtensionInterface
         ) {
             $container->setParameter('mmc_fos_user_bundle.roles.availables', $config['admin']['rolesAvailables']);
         }
+
+        $definition = $container->getDefinition('MMCFosUserBundle.password_resetting');
+        $definition->setArgument(0, $config['baseUrl']);
+        $container->setDefinition('MMCFosUserBundle.password_resetting', $definition);
     }
 
     public function prepend(ContainerBuilder $container)
@@ -86,5 +90,7 @@ class MMCFosUserExtension extends Extension implements PrependExtensionInterface
 
             $container->prependExtensionConfig('sonata_block', $sonata_block);
         }
+
+        $container->prependExtensionConfig('twig', ['globals' => ['fosBaseUrl' => $config['baseUrl']]]);
     }
 }
