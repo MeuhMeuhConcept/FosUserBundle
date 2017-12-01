@@ -1,4 +1,4 @@
-# MeuhMeuhConcept FOS UserBundle 
+# MeuhMeuhConcept FOS UserBundle
 [![Build Status](https://travis-ci.org/MeuhMeuhConcept/FosUserBundle.svg?branch=master)](https://travis-ci.org/MeuhMeuhConcept/FosUserBundle)
 
 Implementation of FosUserBundle for MeuhMeuhConcept
@@ -7,10 +7,10 @@ Implementation of FosUserBundle for MeuhMeuhConcept
 
 Add the repository in composer.json
 ```json
-{                                                                 
+{
        "require": {
-               "friendsofsymfony/user-bundle": "dev-master#c080ad2c30cc3f44b0836ba1951a78e0c55c6b42"",
-       },                                                                      
+               "friendsofsymfony/user-bundle": "~2.0"",
+       },
 }
 ```
 
@@ -57,9 +57,9 @@ twig:
     globals:
         mmc_fos_user_layout: "FOSUserBundle::layout.html.twig"
 ```
-If you need a design layout, you should use the default layout :
+If you need a designed layout, you should use the default layout :
 ```yaml
-i# app/config/config.yml
+# app/config/config.yml
 
 twig:
     globals:
@@ -176,11 +176,13 @@ You should add the service id `mmc_fos_user_bundle.sonata_admin.user` in the ite
 sonata_admin:
     dashboard:
         groups:
-            sonata.admin.group.myGroup:
+            sonata.admin.group.admin:
                 items:
-                    - my_first.admin
                     - mmc_fos_user_bundle.sonata_admin.user
 ```
+
+Don't forget to give access for your admin user with roel ```ROLE_MMC_FOS_USER_BUNDLE_SONATA_ADMIN_USER_ALL```
+
 ## Create a custom block
 
 If you need to add a new custom block, you should :
