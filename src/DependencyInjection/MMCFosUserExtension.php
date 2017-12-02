@@ -43,6 +43,7 @@ class MMCFosUserExtension extends Extension implements PrependExtensionInterface
                 'icon' => $config['admin']['icon'],
             ]);
 
+            $definition->setArgument(1, $config['user_class']);
             $container->setDefinition($serviceId, $definition);
         }
 
@@ -77,6 +78,11 @@ class MMCFosUserExtension extends Extension implements PrependExtensionInterface
         $config = $this->processConfiguration(new Configuration(), $configs);
 
         $bundles = $container->getParameter('kernel.bundles');
+
+        $fos_config = $container->getExtensionConfig('fos_user');
+        if (!isset($fos_config[0]['user_class']) || !$fos_config[0]['user_class']) {
+            $container->prependExtensionConfig('fos_user', ['user_class' => $config['user_class']]);
+        }
 
         if ($config['admin']['enabled']
             && isset($bundles['MMCSonataAdminBundle'])
