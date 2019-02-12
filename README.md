@@ -52,10 +52,13 @@ fos_user:
     firewall_name: main
     user_class: MMC\FosUserBundle\Entity\User
 
-
+mmc_fos_user:
+    admin:
+        rolesAvailables: ~
+        
 twig:
     globals:
-        mmc_fos_user_layout: "FOSUserBundle::layout.html.twig"
+        mmc_fos_user_layout: "MMCFosUserBundle::layout.html.twig"
 ```
 If you need a design layout, you should use the default layout :
 ```yaml
@@ -63,7 +66,7 @@ i# app/config/config.yml
 
 twig:
     globals:
-        mmc_fos_user_layout: "FOSUserBundle:Default:layout.html.twig"
+        mmc_fos_user_layout: "MMCFosUserBundle:Default:layout.html.twig"
 ```
 Add fos user security configuration :
 ```yaml
