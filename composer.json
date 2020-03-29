@@ -22,14 +22,14 @@
     "require": {
         "php": "~7.0",
         "doctrine/orm": "^2.5",
-        "friendsofsymfony/user-bundle": "^2.0",
-        "symfony/config": "^3.3",
-        "symfony/dependency-injection": "^3.3",
-        "symfony/doctrine-bridge": "^3.3",
-        "symfony/event-dispatcher": "^3.3",
-        "symfony/http-foundation": "^3.3",
-        "symfony/http-kernel": "^3.3",
-        "symfony/routing": "^3.3"
+        "friendsofsymfony/user-bundle": "~2.0",
+        "symfony/config": "~3.4.38",
+        "symfony/dependency-injection": "~3.4.38",
+        "symfony/doctrine-bridge": "~3.4.38",
+        "symfony/event-dispatcher": "~3.4.38",
+        "symfony/http-foundation": "~3.4.38",
+        "symfony/http-kernel": "~3.4.38",
+        "symfony/routing": "~3.4.38"
     },
     "require-dev": {
         "doctrine/annotations": "^1.2",

@@ -9,7 +9,7 @@ Add the repository in composer.json
 ```json
 {
        "require": {
-               "friendsofsymfony/user-bundle": "~2.0"",
+               "meuhmeuhconcept/fos-user-bundle": "~2.0"",
        },
 }
 ```
