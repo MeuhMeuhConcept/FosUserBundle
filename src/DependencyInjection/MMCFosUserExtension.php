@@ -56,7 +56,7 @@ class MMCFosUserExtension extends Extension implements PrependExtensionInterface
         ) {
             $definition = $container->getDefinition($sonataAdminTemplate);
 
-            $definition->addTag('sonata.block');
+            $definition->addTag('sonata.block', ['context' => 'nav_top']);
 
             $container->setDefinition($sonataAdminTemplate, $definition);
         }
