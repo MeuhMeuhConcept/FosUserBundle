@@ -19,5 +19,5 @@ services:
     mmc_fos_user_bundle.sonata_admin.template:
         class: 'MMC\FosUserBundle\Block\UserBlock'
         arguments:
-            - mmc_fos_user_bundle.sonata_admin.template
-            - "@templating"
+            - "@twig"
+            - 'mmc_fos_user_bundle.sonata_admin.template'
