@@ -8,6 +8,8 @@ use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Show\ShowMapper;
+use Symfony\Component\Form\Extension\Core\Type\PasswordType;
+use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
 
 class UserAdmin extends AbstractAdmin
 {
@@ -108,8 +110,8 @@ class UserAdmin extends AbstractAdmin
             ->with('User')
                 ->add('username')
                 ->add('email')
-                ->add('plainPassword', 'repeated', [
-                    'type' => 'password',
+                ->add('plainPassword', RepeatedType::class, [
+                    'type' => PasswordType::class,
                     'options' => ['translation_domain' => 'FOSUserBundle'],
                     'first_options' => ['label' => 'form.password'],
                     'validation_groups' => ['Default'],
