@@ -8,6 +8,7 @@ use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Show\ShowMapper;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
 
@@ -123,7 +124,7 @@ class UserAdmin extends AbstractAdmin
 
         if ($this->isGranted('MANAGE_ROLES')) {
             $formMapper
-                ->add('roles', 'choice', [
+                ->add('roles', ChoiceType::class', [
                     'choices' => $this->getRolesList(),
                     'translation_domain' => 'UserAdmin',
                     'expanded' => false,
