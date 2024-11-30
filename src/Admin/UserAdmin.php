@@ -124,7 +124,7 @@ class UserAdmin extends AbstractAdmin
 
         if ($this->isGranted('MANAGE_ROLES')) {
             $formMapper
-                ->add('roles', ChoiceType::class', [
+                ->add('roles', ChoiceType::class, [
                     'choices' => $this->getRolesList(),
                     'translation_domain' => 'UserAdmin',
                     'expanded' => false,
